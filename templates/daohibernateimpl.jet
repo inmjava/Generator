@@ -1,0 +1,222 @@
+<%@ jet package="br.gov.pr.apucarana.generator.daogenerator.templates" 
+		class="DaoHibernateImplTemplate" 
+		skeleton="generator.skeleton" %>
+<%= "package " + arg.getPacote() + ".dao.impl;" %>
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.criterion.Example;
+import org.hibernate.criterion.Projections;
+
+import <%= arg.getHibernateUtilClass()%>;
+import <%= arg.getPacote() + "." + arg.getNomeClasse()%>;
+import <%= arg.getPacote() + ".dao." + arg.getNomeClasse()%>Dao;
+
+/**
+ * Implementacao do acesso a dados da classe <%=arg.getNomeClasse()%> via 
+ * Hibernate
+ * 
+ * Pattern Data Access Object
+ *
+ * <%=new java.util.Date()%>
+ *
+ */
+ public class <%=arg.getNomeClasse()%>DaoHibernateImpl implements <%=arg.getNomeClasse()%>Dao {
+	
+	private static boolean dev = false;
+	
+	public <%=arg.getNomeClasse()%>DaoHibernateImpl() {
+		
+	}
+	
+	/**
+	 * Salva objeto da classe <%=arg.getNomeClasse()%>.
+	 * 
+	 * @param <%=arg.getCamelNome()%> Objeto da classe <%=arg.getNomeClasse()%>
+	 * @throws Exception Caso ocorra erro com hibernate/conexao.
+	 */
+	public void salvar(<%=arg.getNomeClasse()%> <%=arg.getCamelNome()%>) throws Exception {
+		Session session = <%=arg.getHibernateUtilClassName()%>.getSession();
+		Transaction tx = session.beginTransaction();
+		try {
+			session.save(<%=arg.getCamelNome()%>);
+			tx.commit();
+		} catch (HibernateException e) {
+			tx.rollback();
+			if (dev) {
+				e.printStackTrace();
+			}
+			throw e;
+		} finally {
+			session.close();
+			<%=arg.getHibernateUtilClassName()%>.closeSessionFactory();
+		}
+	}
+
+	
+	/**
+	 * Altera objeto da classe <%=arg.getNomeClasse()%>.
+	 * 
+	 * @param <%=arg.getCamelNome()%> Objeto da classe <%=arg.getNomeClasse()%>
+	 * @throws Exception Caso ocorra erro com hibernate/conexao.
+	 */
+	public void alterar(<%=arg.getNomeClasse()%> <%=arg.getCamelNome()%>) throws Exception {
+		Session session = <%=arg.getHibernateUtilClassName()%>.getSession();
+		Transaction tx = session.beginTransaction();
+		try {
+			session.update(<%=arg.getCamelNome()%>);
+			tx.commit();
+		} catch (HibernateException e) {
+			tx.rollback();
+			if (dev) {
+				e.printStackTrace();
+			}
+			throw e;
+		} finally {
+			session.close();
+			<%=arg.getHibernateUtilClassName()%>.closeSessionFactory();
+		}
+	}
+	
+	/**
+	 * Exclui objeto da classe <%=arg.getNomeClasse()%>.
+	 * 
+	 * @param <%=arg.getCamelNome()%> Objeto da classe <%=arg.getNomeClasse()%>
+	 * @throws Exception Caso ocorra erro com hibernate/conexao.
+	 */
+	public void excluir(<%=arg.getNomeClasse()%> <%=arg.getCamelNome()%>) throws Exception {
+		Session session = <%=arg.getHibernateUtilClassName()%>.getSession();
+		Transaction tx = session.beginTransaction();
+		try {
+			session.delete(<%=arg.getCamelNome()%>);
+			tx.commit();
+		} catch (HibernateException e) {
+			tx.rollback();
+			if (dev) {
+				e.printStackTrace();
+			}
+			throw e;
+		} finally {
+			session.close();
+			<%=arg.getHibernateUtilClassName()%>.closeSessionFactory();
+		}
+	}
+	
+	/**
+	 * Conta o número objetos da classe <%=arg.getNomeClasse()%>.
+	 */
+	public int contar() throws Exception {
+		Session session = <%=arg.getHibernateUtilClassName()%>.getSession();
+		try {
+			Criteria q = session.createCriteria(<%=arg.getNomeClasse()%>.class).setProjection(Projections.rowCount());
+			return (Integer) q.list().get(0);
+		} catch (HibernateException e) {
+			if (dev) {
+				e.printStackTrace();
+			}
+			throw e;
+		} finally {
+			session.close();
+			<%=arg.getHibernateUtilClassName()%>.closeSessionFactory();
+		}
+	}
+	
+	/**
+	 * Listagem de objetos da classe <%=arg.getNomeClasse()%>.
+	 * 
+	 * @param example Objeto com atributos para listagem 
+	 * @param qtdPagina quantidade de itens listados em cada pagina 
+	 * @param numPagina numero da pagina a ser buscada
+	 * @return Lista de objetos <%=arg.getNomeClasse()%>
+	 * @throws Exception Caso ocorra erro com hibernate/conexao.
+	 */
+	@SuppressWarnings("unchecked")
+	public Collection<<%=arg.getNomeClasse()%>> listar(<%=arg.getNomeClasse()%> example, Integer qtdPagina, Integer numPagina) throws Exception {
+		Collection<<%=arg.getNomeClasse()%>> coll = new ArrayList<<%=arg.getNomeClasse()%>>();
+		Session session = <%=arg.getHibernateUtilClassName()%>.getSession();
+		try {
+			Criteria q = session.createCriteria(<%=arg.getNomeClasse()%>.class);
+			if(example != null){
+				Example sample = Example.create(example);
+				sample.enableLike();
+				sample.excludeZeroes();
+				q.add(sample);
+			}
+			if (qtdPagina != null && numPagina != null) {
+				q.setMaxResults(qtdPagina.intValue());
+				q.setFirstResult( (numPagina.intValue()-1) * qtdPagina.intValue() );
+			}
+			List<<%=arg.getNomeClasse()%>> list = q.list();
+			coll = list;
+		} catch (HibernateException e) {
+			if (dev) {
+				e.printStackTrace();
+			}
+			throw e;
+		} finally {
+			session.close();
+			<%=arg.getHibernateUtilClassName()%>.closeSessionFactory();
+		}
+		return coll;
+	}
+	
+	/**
+	 * Listagem de objetos da classe <%=arg.getNomeClasse()%>.
+	 * 
+	 * @param example Objeto com atributos para listagem 
+	 * @return Lista de objetos <%=arg.getNomeClasse()%>
+	 * @throws Exception Caso ocorra erro com hibernate/conexao.
+	 */
+	public Collection<<%=arg.getNomeClasse()%>> listar(<%=arg.getNomeClasse()%> example) throws Exception {
+		return this.listar(example, null, null);
+	}
+	
+	/**
+	 * Listagem de objetos da classe <%=arg.getNomeClasse()%>.
+	 * 
+	 * @param qtdPagina quantidade de itens listados em cada pagina 
+	 * @param numPagina numero da pagina a ser buscada
+	 * @return Lista de objetos <%=arg.getNomeClasse()%>
+	 * @throws Exception Caso ocorra erro com hibernate/conexao.
+	 */
+	public Collection<<%=arg.getNomeClasse()%>> listar(Integer qtdPagina, Integer numPagina) throws Exception {
+		return this.listar(null, qtdPagina, numPagina);
+	}
+	
+	/**
+	 * Listagem de objetos da classe <%=arg.getNomeClasse()%>.
+	 * 
+	 * @return Lista de objetos <%=arg.getNomeClasse()%>
+	 * @throws Exception Caso ocorra erro com hibernate/conexao.
+	 */
+	public Collection<<%=arg.getNomeClasse()%>> listar() throws Exception {
+		return this.listar(null, null, null);
+	}
+		
+	/**
+	 * Obtem um objeto da classe <%=arg.getNomeClasse()%>.
+	 * 
+	 * @param id Chave primaria do objeto
+	 * @throws Exception Caso ocorra erro com hibernate/conexao.
+	 */
+	public <%=arg.getNomeClasse()%> listar(long id) throws Exception {
+		Session session = <%=arg.getHibernateUtilClassName()%>.getSession();
+		try {
+			return (<%=arg.getNomeClasse()%>)session.get(<%=arg.getNomeClasse()%>.class, id);
+		} catch (HibernateException e) {
+			if (dev) {
+				e.printStackTrace();
+			}
+			throw e;
+		} finally {
+			session.close();
+			<%=arg.getHibernateUtilClassName()%>.closeSessionFactory();
+		}
+	}
+}

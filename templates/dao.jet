@@ -1,0 +1,94 @@
+<%@ jet package="br.gov.pr.apucarana.generator.daogenerator.templates" 
+		class="DaoTemplate" 
+		skeleton="generator.skeleton" %>
+package <%= arg.getPacote()%>.dao;
+
+import java.util.Collection;
+import <%= arg.getPacote() + "." + arg.getNomeClasse()%>;
+
+/**
+ * Interface para controle de objetos persistentes da classe <%=arg.getNomeClasse()%>
+ * 
+ * Pattern Data Access Object
+ * 
+ * <%=new java.util.Date()%>
+ *
+ */
+public interface <%=arg.getNomeClasse()%>Dao {
+	
+	/**
+	 * Salva objeto da classe <%=arg.getNomeClasse()%>.
+	 * 
+	 * @param <%=arg.getCamelNome()%> Objeto da classe <%=arg.getNomeClasse()%>
+	 * @throws Exception Caso ocorra erro com hibernate/conexao.
+	 */
+	public void salvar(<%=arg.getNomeClasse() + " " + arg.getCamelNome()%>) throws Exception;
+
+	/**
+	 * Altera objeto da classe <%=arg.getNomeClasse()%>.
+	 * 
+	 * @param <%=arg.getCamelNome()%> Objeto da classe <%=arg.getNomeClasse()%>
+	 * @throws Exception Caso ocorra erro com hibernate/conexao.
+	 */
+	public void alterar(<%=arg.getNomeClasse() + " " + arg.getCamelNome()%>) throws Exception;
+	
+	/**
+	 * Exclui objeto da classe <%=arg.getNomeClasse()%>.
+	 * 
+	 * @param <%=arg.getCamelNome()%> Objeto da classe <%=arg.getNomeClasse()%>
+	 * @throws Exception Caso ocorra erro com hibernate/conexao.
+	 */
+	public void excluir(<%=arg.getNomeClasse() + " " + arg.getCamelNome()%>) throws Exception;
+	
+	/**
+	 * Conta o número objetos da classe <%=arg.getNomeClasse()%>.
+	 */
+	public int contar() throws Exception;
+	
+	/**
+	 * Listagem de objetos da classe <%=arg.getNomeClasse()%>.
+	 * 
+	 * @param example Objeto com atributos para listagem 
+	 * @param qtdPagina quantidade de itens listados em cada pagina 
+	 * @param numPagina numero da pagina a ser buscada
+	 * @return Lista de objetos <%=arg.getNomeClasse()%>
+	 * @throws Exception Caso ocorra erro com hibernate/conexao.
+	 */
+	public Collection<<%=arg.getNomeClasse()%>> listar(<%=arg.getNomeClasse()%> example, Integer qtdPagina, Integer numPagina) throws Exception;
+	
+	/**
+	 * Listagem de objetos da classe <%=arg.getNomeClasse()%>.
+	 * 
+	 * @param example Objeto com atributos para listagem 
+	 * @return Lista de objetos <%=arg.getNomeClasse()%>
+	 * @throws Exception Caso ocorra erro com hibernate/conexao.
+	 */
+	public Collection<<%=arg.getNomeClasse()%>> listar(<%=arg.getNomeClasse()%> example) throws Exception;
+	
+	/**
+	 * Listagem de objetos da classe <%=arg.getNomeClasse()%>.
+	 * 
+	 * @param qtdPagina quantidade de itens listados em cada pagina 
+	 * @param numPagina numero da pagina a ser buscada
+	 * @return Lista de objetos <%=arg.getNomeClasse()%>
+	 * @throws Exception Caso ocorra erro com hibernate/conexao.
+	 */
+	public Collection<<%=arg.getNomeClasse()%>> listar(Integer qtdPagina, Integer numPagina) throws Exception;
+	
+	/**
+	 * Listagem de objetos da classe <%=arg.getNomeClasse()%>.
+	 * 
+	 * @return Lista de objetos <%=arg.getNomeClasse()%>
+	 * @throws Exception Caso ocorra erro com hibernate/conexao.
+	 */
+	public Collection<<%=arg.getNomeClasse()%>> listar() throws Exception;
+	
+	/**
+	 * Obtem um objeto da classe <%=arg.getNomeClasse()%>.
+	 * 
+	 * @param id Chave primaria do objeto
+	 * @throws Exception Caso ocorra erro com hibernate/conexao.
+	 */
+	public <%=arg.getNomeClasse()%> listar(long id) throws Exception;
+
+}

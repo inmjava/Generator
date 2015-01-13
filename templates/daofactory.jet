@@ -1,0 +1,34 @@
+<%@ jet package="br.gov.pr.apucarana.generator.daogenerator.templates" 
+		class="DaoFactoryTemplate" 
+		skeleton="generator.skeleton" %>
+package <%= arg.getPacote()%>.dao.factory;
+
+import <%= arg.getPacote() %>.dao.<%=arg.getNomeClasse()%>Dao;
+import <%= arg.getPacote() %>.dao.impl.<%=arg.getNomeClasse()%>DaoHibernateImpl;
+
+/**
+ * Factory de instancias da classe <%=arg.getNomeClasse()%>
+ * 
+ * Pattern Data Access Object
+ *
+ * <%=new java.util.Date()%>
+ *
+ */
+public class <%=arg.getNomeClasse()%>DaoFactory {
+	
+	public static final int HIBERNATE = 0;
+	
+	public static <%=arg.getNomeClasse()%>Dao create<%=arg.getNomeClasse()%>Dao(int whichFactory) {
+		switch (whichFactory) {
+	    	case HIBERNATE: 
+	    		return new <%=arg.getNomeClasse()%>DaoHibernateImpl();
+	    	default:
+			return null;
+		}
+	}
+	
+	public static <%=arg.getNomeClasse()%>Dao create<%=arg.getNomeClasse()%>Dao() {
+		return <%=arg.getNomeClasse()%>DaoFactory.create<%=arg.getNomeClasse()%>Dao(<%=arg.getNomeClasse()%>DaoFactory.HIBERNATE);
+	}
+	
+}

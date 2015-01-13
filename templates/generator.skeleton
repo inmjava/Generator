@@ -1,0 +1,6 @@
+import br.gov.pr.apucarana.generator.daogenerator.bean.Parameros;
+
+public class CLASS {
+	public String generate(Parameros arg) {
+	}
+}
