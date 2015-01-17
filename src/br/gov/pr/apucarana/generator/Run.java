@@ -27,8 +27,8 @@ public class Run {
 //		"/DOE/src/br/gov/pr/apucarana/doe/util/HibernateUtil.java"), Util.eclipse2JavaQualifiedName(
 //		"br.gov.pr.apucarana.siteadmin.pojo.exception.ApplicationException")));
 
-		Generator generator = new Generator("C:/Users/Ivan/workspace/MissaGenerator-Gui/src",new Parameros("" + Util.eclipse2JavaQualifiedName(
-		"/MissaGenerator-Gui/src/model/Musica.java"),Util.eclipse2JavaQualifiedName(
+		Generator generator = new Generator("C:/Users/Ivan/git/MissaGenerator-Gui/src",new Parameros("" + Util.eclipse2JavaQualifiedName(
+		"/MissaGenerator-Gui/src/model/Momento.java"),Util.eclipse2JavaQualifiedName(
 		"/MissaGenerator-Gui/src/model/HibernateUtil.java"), Util.eclipse2JavaQualifiedName(
 		"br.gov.pr.apucarana.siteadmin.pojo.exception.ApplicationException")));
 
