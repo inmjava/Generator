@@ -29,7 +29,7 @@ public class DaoHibernateImplTemplate {
   protected final String TEXT_14 = " ";
   protected final String TEXT_15 = ") throws Exception {" + NL + "\t\tSession session = ";
   protected final String TEXT_16 = ".getSession();" + NL + "\t\tTransaction tx = session.beginTransaction();" + NL + "\t\ttry {" + NL + "\t\t\tsession.save(";
-  protected final String TEXT_17 = ");" + NL + "\t\t\ttx.commit();" + NL + "\t\t} catch (HibernateException e) {" + NL + "\t\t\ttx.rollback();" + NL + "\t\t\tif (dev) {" + NL + "\t\t\t\te.printStackTrace();" + NL + "\t\t\t}" + NL + "\t\t\tthrow e;" + NL + "\t\t} finally {" + NL + "\t\t\tsession.close();" + NL + "\t\t\t";
+  protected final String TEXT_17 = ");" + NL + "\t\t\ttx.commit();" + NL + "\t\t} catch (HibernateException e) {" + NL + "\t\t\ttx.rollback();" + NL + "\t\t\tif (dev) {" + NL + "\t\t\t\te.printStackTrace();" + NL + "\t\t\t}" + NL + "\t\t\tthrow e;" + NL + "\t\t} finally {" + NL + "\t\t\tsession.close();" + NL + "\t\t\t//";
   protected final String TEXT_18 = ".closeSessionFactory();" + NL + "\t\t}" + NL + "\t}" + NL + "" + NL + "\t" + NL + "\t/**" + NL + "\t * Altera objeto da classe ";
   protected final String TEXT_19 = "." + NL + "\t * " + NL + "\t * @param ";
   protected final String TEXT_20 = " Objeto da classe ";
@@ -37,7 +37,7 @@ public class DaoHibernateImplTemplate {
   protected final String TEXT_22 = " ";
   protected final String TEXT_23 = ") throws Exception {" + NL + "\t\tSession session = ";
   protected final String TEXT_24 = ".getSession();" + NL + "\t\tTransaction tx = session.beginTransaction();" + NL + "\t\ttry {" + NL + "\t\t\tsession.update(";
-  protected final String TEXT_25 = ");" + NL + "\t\t\ttx.commit();" + NL + "\t\t} catch (HibernateException e) {" + NL + "\t\t\ttx.rollback();" + NL + "\t\t\tif (dev) {" + NL + "\t\t\t\te.printStackTrace();" + NL + "\t\t\t}" + NL + "\t\t\tthrow e;" + NL + "\t\t} finally {" + NL + "\t\t\tsession.close();" + NL + "\t\t\t";
+  protected final String TEXT_25 = ");" + NL + "\t\t\ttx.commit();" + NL + "\t\t} catch (HibernateException e) {" + NL + "\t\t\ttx.rollback();" + NL + "\t\t\tif (dev) {" + NL + "\t\t\t\te.printStackTrace();" + NL + "\t\t\t}" + NL + "\t\t\tthrow e;" + NL + "\t\t} finally {" + NL + "\t\t\tsession.close();" + NL + "\t\t\t//";
   protected final String TEXT_26 = ".closeSessionFactory();" + NL + "\t\t}" + NL + "\t}" + NL + "\t" + NL + "\t/**" + NL + "\t * Exclui objeto da classe ";
   protected final String TEXT_27 = "." + NL + "\t * " + NL + "\t * @param ";
   protected final String TEXT_28 = " Objeto da classe ";
@@ -45,11 +45,11 @@ public class DaoHibernateImplTemplate {
   protected final String TEXT_30 = " ";
   protected final String TEXT_31 = ") throws Exception {" + NL + "\t\tSession session = ";
   protected final String TEXT_32 = ".getSession();" + NL + "\t\tTransaction tx = session.beginTransaction();" + NL + "\t\ttry {" + NL + "\t\t\tsession.delete(";
-  protected final String TEXT_33 = ");" + NL + "\t\t\ttx.commit();" + NL + "\t\t} catch (HibernateException e) {" + NL + "\t\t\ttx.rollback();" + NL + "\t\t\tif (dev) {" + NL + "\t\t\t\te.printStackTrace();" + NL + "\t\t\t}" + NL + "\t\t\tthrow e;" + NL + "\t\t} finally {" + NL + "\t\t\tsession.close();" + NL + "\t\t\t";
+  protected final String TEXT_33 = ");" + NL + "\t\t\ttx.commit();" + NL + "\t\t} catch (HibernateException e) {" + NL + "\t\t\ttx.rollback();" + NL + "\t\t\tif (dev) {" + NL + "\t\t\t\te.printStackTrace();" + NL + "\t\t\t}" + NL + "\t\t\tthrow e;" + NL + "\t\t} finally {" + NL + "\t\t\tsession.close();" + NL + "\t\t\t//";
   protected final String TEXT_34 = ".closeSessionFactory();" + NL + "\t\t}" + NL + "\t}" + NL + "\t" + NL + "\t/**" + NL + "\t * Conta o n?mero objetos da classe ";
   protected final String TEXT_35 = "." + NL + "\t */" + NL + "\tpublic int contar() throws Exception {" + NL + "\t\tSession session = ";
   protected final String TEXT_36 = ".getSession();" + NL + "\t\ttry {" + NL + "\t\t\tCriteria q = session.createCriteria(";
-  protected final String TEXT_37 = ".class).setProjection(Projections.rowCount());" + NL + "\t\t\treturn (Integer) q.list().get(0);" + NL + "\t\t} catch (HibernateException e) {" + NL + "\t\t\tif (dev) {" + NL + "\t\t\t\te.printStackTrace();" + NL + "\t\t\t}" + NL + "\t\t\tthrow e;" + NL + "\t\t} finally {" + NL + "\t\t\tsession.close();" + NL + "\t\t\t";
+  protected final String TEXT_37 = ".class).setProjection(Projections.rowCount());" + NL + "\t\t\treturn (Integer) q.list().get(0);" + NL + "\t\t} catch (HibernateException e) {" + NL + "\t\t\tif (dev) {" + NL + "\t\t\t\te.printStackTrace();" + NL + "\t\t\t}" + NL + "\t\t\tthrow e;" + NL + "\t\t} finally {" + NL + "\t\t\tsession.close();" + NL + "\t\t\t//";
   protected final String TEXT_38 = ".closeSessionFactory();" + NL + "\t\t}" + NL + "\t}" + NL + "\t" + NL + "\t/**" + NL + "\t * Listagem de objetos da classe ";
   protected final String TEXT_39 = "." + NL + "\t * " + NL + "\t * @param example Objeto com atributos para listagem " + NL + "\t * @param qtdPagina quantidade de itens listados em cada pagina " + NL + "\t * @param numPagina numero da pagina a ser buscada" + NL + "\t * @return Lista de objetos ";
   protected final String TEXT_40 = NL + "\t * @throws Exception Caso ocorra erro com hibernate/conexao." + NL + "\t */" + NL + "\t@SuppressWarnings(\"unchecked\")" + NL + "\tpublic Collection<";
@@ -59,7 +59,7 @@ public class DaoHibernateImplTemplate {
   protected final String TEXT_44 = ">();" + NL + "\t\tSession session = ";
   protected final String TEXT_45 = ".getSession();" + NL + "\t\ttry {" + NL + "\t\t\tCriteria q = session.createCriteria(";
   protected final String TEXT_46 = ".class);" + NL + "\t\t\tif(example != null){" + NL + "\t\t\t\tExample sample = Example.create(example);" + NL + "\t\t\t\tsample.enableLike();" + NL + "\t\t\t\tsample.excludeZeroes();" + NL + "\t\t\t\tq.add(sample);" + NL + "\t\t\t}" + NL + "\t\t\tif (qtdPagina != null && numPagina != null) {" + NL + "\t\t\t\tq.setMaxResults(qtdPagina.intValue());" + NL + "\t\t\t\tq.setFirstResult( (numPagina.intValue()-1) * qtdPagina.intValue() );" + NL + "\t\t\t}" + NL + "\t\t\tList<";
-  protected final String TEXT_47 = "> list = q.list();" + NL + "\t\t\tcoll = list;" + NL + "\t\t} catch (HibernateException e) {" + NL + "\t\t\tif (dev) {" + NL + "\t\t\t\te.printStackTrace();" + NL + "\t\t\t}" + NL + "\t\t\tthrow e;" + NL + "\t\t} finally {" + NL + "\t\t\tsession.close();" + NL + "\t\t\t";
+  protected final String TEXT_47 = "> list = q.list();" + NL + "\t\t\tcoll = list;" + NL + "\t\t} catch (HibernateException e) {" + NL + "\t\t\tif (dev) {" + NL + "\t\t\t\te.printStackTrace();" + NL + "\t\t\t}" + NL + "\t\t\tthrow e;" + NL + "\t\t} finally {" + NL + "\t\t\tsession.close();" + NL + "\t\t\t//";
   protected final String TEXT_48 = ".closeSessionFactory();" + NL + "\t\t}" + NL + "\t\treturn coll;" + NL + "\t}" + NL + "\t" + NL + "\t/**" + NL + "\t * Listagem de objetos da classe ";
   protected final String TEXT_49 = "." + NL + "\t * " + NL + "\t * @param example Objeto com atributos para listagem " + NL + "\t * @return Lista de objetos ";
   protected final String TEXT_50 = NL + "\t * @throws Exception Caso ocorra erro com hibernate/conexao." + NL + "\t */" + NL + "\tpublic Collection<";
@@ -75,7 +75,7 @@ public class DaoHibernateImplTemplate {
   protected final String TEXT_60 = " listar(long id) throws Exception {" + NL + "\t\tSession session = ";
   protected final String TEXT_61 = ".getSession();" + NL + "\t\ttry {" + NL + "\t\t\treturn (";
   protected final String TEXT_62 = ")session.get(";
-  protected final String TEXT_63 = ".class, id);" + NL + "\t\t} catch (HibernateException e) {" + NL + "\t\t\tif (dev) {" + NL + "\t\t\t\te.printStackTrace();" + NL + "\t\t\t}" + NL + "\t\t\tthrow e;" + NL + "\t\t} finally {" + NL + "\t\t\tsession.close();" + NL + "\t\t\t";
+  protected final String TEXT_63 = ".class, id);" + NL + "\t\t} catch (HibernateException e) {" + NL + "\t\t\tif (dev) {" + NL + "\t\t\t\te.printStackTrace();" + NL + "\t\t\t}" + NL + "\t\t\tthrow e;" + NL + "\t\t} finally {" + NL + "\t\t\tsession.close();" + NL + "\t\t\t//";
   protected final String TEXT_64 = ".closeSessionFactory();" + NL + "\t\t}" + NL + "\t}" + NL + "}";
 
 	public String generate(Parameros arg)

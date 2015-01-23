@@ -55,7 +55,7 @@ import <%= arg.getPacote() + ".dao." + arg.getNomeClasse()%>Dao;
 			throw e;
 		} finally {
 			session.close();
-			<%=arg.getHibernateUtilClassName()%>.closeSessionFactory();
+			//<%=arg.getHibernateUtilClassName()%>.closeSessionFactory();
 		}
 	}
 
@@ -80,7 +80,7 @@ import <%= arg.getPacote() + ".dao." + arg.getNomeClasse()%>Dao;
 			throw e;
 		} finally {
 			session.close();
-			<%=arg.getHibernateUtilClassName()%>.closeSessionFactory();
+			//<%=arg.getHibernateUtilClassName()%>.closeSessionFactory();
 		}
 	}
 	
@@ -104,7 +104,7 @@ import <%= arg.getPacote() + ".dao." + arg.getNomeClasse()%>Dao;
 			throw e;
 		} finally {
 			session.close();
-			<%=arg.getHibernateUtilClassName()%>.closeSessionFactory();
+			//<%=arg.getHibernateUtilClassName()%>.closeSessionFactory();
 		}
 	}
 	
@@ -123,7 +123,7 @@ import <%= arg.getPacote() + ".dao." + arg.getNomeClasse()%>Dao;
 			throw e;
 		} finally {
 			session.close();
-			<%=arg.getHibernateUtilClassName()%>.closeSessionFactory();
+			//<%=arg.getHibernateUtilClassName()%>.closeSessionFactory();
 		}
 	}
 	
@@ -161,7 +161,7 @@ import <%= arg.getPacote() + ".dao." + arg.getNomeClasse()%>Dao;
 			throw e;
 		} finally {
 			session.close();
-			<%=arg.getHibernateUtilClassName()%>.closeSessionFactory();
+			//<%=arg.getHibernateUtilClassName()%>.closeSessionFactory();
 		}
 		return coll;
 	}
@@ -216,7 +216,7 @@ import <%= arg.getPacote() + ".dao." + arg.getNomeClasse()%>Dao;
 			throw e;
 		} finally {
 			session.close();
-			<%=arg.getHibernateUtilClassName()%>.closeSessionFactory();
+			//<%=arg.getHibernateUtilClassName()%>.closeSessionFactory();
 		}
 	}
 }
