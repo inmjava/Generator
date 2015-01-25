@@ -14,7 +14,7 @@ public class DaoHibernateImplTemplate {
 
   public final String NL = nl == null ? (System.getProperties().getProperty("line.separator")) : nl;
   protected final String TEXT_1 = "";
-  protected final String TEXT_2 = NL + NL + "import java.util.ArrayList;" + NL + "import java.util.Collection;" + NL + "import java.util.List;" + NL + "" + NL + "import org.hibernate.Criteria;" + NL + "import org.hibernate.HibernateException;" + NL + "import org.hibernate.Session;" + NL + "import org.hibernate.Transaction;" + NL + "import org.hibernate.criterion.Example;" + NL + "import org.hibernate.criterion.Projections;" + NL + "" + NL + "import ";
+  protected final String TEXT_2 = NL + NL + "import java.util.ArrayList;" + NL + "import java.util.Collection;" + NL + "import java.util.List;" + NL + "" + NL + "import org.hibernate.Criteria;" + NL + "import org.hibernate.HibernateException;" + NL + "import org.hibernate.Query;" + NL + "import org.hibernate.Session;" + NL + "import org.hibernate.Transaction;" + NL + "import org.hibernate.criterion.Example;" + NL + "import org.hibernate.criterion.Projections;" + NL + "" + NL + "import ";
   protected final String TEXT_3 = ";" + NL + "import ";
   protected final String TEXT_4 = ";" + NL + "import ";
   protected final String TEXT_5 = "Dao;" + NL + "" + NL + "/**" + NL + " * Implementacao do acesso a dados da classe ";
@@ -73,7 +73,15 @@ public class DaoHibernateImplTemplate {
   protected final String TEXT_58 = " listar(long id) throws Exception {" + NL + "\t\tSession session = ";
   protected final String TEXT_59 = ".getSession();" + NL + "\t\ttry {" + NL + "\t\t\treturn (";
   protected final String TEXT_60 = ")session.get(";
-  protected final String TEXT_61 = ".class, id);" + NL + "\t\t} catch (HibernateException e) {" + NL + "\t\t\tif (dev) {" + NL + "\t\t\t\te.printStackTrace();" + NL + "\t\t\t}" + NL + "\t\t\tthrow e;" + NL + "\t\t}" + NL + "\t}" + NL + "}";
+  protected final String TEXT_61 = ".class, id);" + NL + "\t\t} catch (HibernateException e) {" + NL + "\t\t\tif (dev) {" + NL + "\t\t\t\te.printStackTrace();" + NL + "\t\t\t}" + NL + "\t\t\tthrow e;" + NL + "\t\t}" + NL + "\t}";
+  protected final String TEXT_62 = NL + "\t" + NL + "\t/**" + NL + "\t * Obtem objetos ";
+  protected final String TEXT_63 = " da classe ";
+  protected final String TEXT_64 = "." + NL + "\t * " + NL + "\t * @param id Chave primaria do objeto" + NL + "\t * @throws Exception Caso ocorra erro com hibernate/conexao." + NL + "\t */" + NL + "\t@SuppressWarnings(\"unchecked\")" + NL + "\tpublic List<";
+  protected final String TEXT_65 = "> listar";
+  protected final String TEXT_66 = "(int id) throws Exception {" + NL + "\t\tSession session = HibernateUtil.getSession();" + NL + "\t\ttry {" + NL + "\t\t\tQuery query = session.createQuery(\"select b from ";
+  protected final String TEXT_67 = " a join a.";
+  protected final String TEXT_68 = " b where a.id = :id\");" + NL + "\t\t\tquery.setParameter(\"id\", id);" + NL + "\t\t\treturn query.list();" + NL + "\t\t} catch (HibernateException e) {" + NL + "\t\t\tif (dev) {" + NL + "\t\t\t\te.printStackTrace();" + NL + "\t\t\t}" + NL + "\t\t\tthrow e;" + NL + "\t\t} " + NL + "\t}";
+  protected final String TEXT_69 = NL + "}";
 
 	public String generate(Parameros arg)
   {
@@ -199,6 +207,22 @@ public class DaoHibernateImplTemplate {
     stringBuffer.append(TEXT_60);
     stringBuffer.append(arg.getNomeClasse());
     stringBuffer.append(TEXT_61);
+    for (int i = 0; i < arg.getListas().length; i++) {
+    stringBuffer.append(TEXT_62);
+    stringBuffer.append(arg.getListas()[i]);
+    stringBuffer.append(TEXT_63);
+    stringBuffer.append(arg.getNomeClasse());
+    stringBuffer.append(TEXT_64);
+    stringBuffer.append(arg.getNomeClasse());
+    stringBuffer.append(TEXT_65);
+    stringBuffer.append((arg.getListas()[i].charAt(0)+"").toUpperCase() + arg.getListas()[i].substring(1));
+    stringBuffer.append(TEXT_66);
+    stringBuffer.append(arg.getNomeClasse());
+    stringBuffer.append(TEXT_67);
+    stringBuffer.append(arg.getListas()[i]);
+    stringBuffer.append(TEXT_68);
+    }
+    stringBuffer.append(TEXT_69);
     return stringBuffer.toString();
   }
 }

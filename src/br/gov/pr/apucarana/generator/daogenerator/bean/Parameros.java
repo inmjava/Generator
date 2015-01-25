@@ -9,13 +9,15 @@ public class Parameros {
 	private String hibernateUtilClass;
 	private String hibernateUtilClassName;
 	private String applicationExceptionClass;
+	private String[] listas;
 
-	public Parameros(String qualifiedName, String hibernateUtilClass, String applicationExceptionClass) {
+	public Parameros(String qualifiedName, String hibernateUtilClass, String applicationExceptionClass, String[] listas) {
 		this.setPacote(Util.getNomePacote(qualifiedName));
 		this.setNomeClasse(Util.getNomeClasse(qualifiedName));
 		this.setHibernateUtilClass(hibernateUtilClass);
 		this.setHibernateUtilClassName(Util.getNomeClasse(hibernateUtilClass));
 		this.setApplicationExceptionClass(applicationExceptionClass);
+		this.setListas(listas == null ? new String[]{} : listas);
 	}
 
 	public String getHibernateUtilClass() {
@@ -64,6 +66,14 @@ public class Parameros {
 
 	public void setApplicationExceptionClass(String applicationExceptionClass) {
 		this.applicationExceptionClass = applicationExceptionClass;
+	}
+	
+	public String[] getListas() {
+		return listas;
+	}
+	
+	public void setListas(String[] listas) {
+		this.listas = listas;
 	}
 
 }

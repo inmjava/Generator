@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Example;
@@ -206,5 +207,26 @@ import <%= arg.getPacote() + ".dao." + arg.getNomeClasse()%>Dao;
 			}
 			throw e;
 		}
-	}
+	}<%for (int i = 0; i < arg.getListas().length; i++) {%>
+	
+	/**
+	 * Obtem objetos <%=arg.getListas()[i]%> da classe <%=arg.getNomeClasse()%>.
+	 * 
+	 * @param id Chave primaria do objeto
+	 * @throws Exception Caso ocorra erro com hibernate/conexao.
+	 */
+	@SuppressWarnings("unchecked")
+	public List<<%=arg.getNomeClasse()%>> listar<%=(arg.getListas()[i].charAt(0)+"").toUpperCase() + arg.getListas()[i].substring(1)%>(int id) throws Exception {
+		Session session = HibernateUtil.getSession();
+		try {
+			Query query = session.createQuery("select b from <%=arg.getNomeClasse()%> a join a.<%=arg.getListas()[i]%> b where a.id = :id");
+			query.setParameter("id", id);
+			return query.list();
+		} catch (HibernateException e) {
+			if (dev) {
+				e.printStackTrace();
+			}
+			throw e;
+		} 
+	}<%}%>
 }
