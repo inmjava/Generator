@@ -14,7 +14,7 @@ public class DaoTemplate {
 
   public final String NL = nl == null ? (System.getProperties().getProperty("line.separator")) : nl;
   protected final String TEXT_1 = "package ";
-  protected final String TEXT_2 = ".dao;" + NL + "" + NL + "import java.util.Collection;" + NL + "import ";
+  protected final String TEXT_2 = ".dao;" + NL + "" + NL + "import java.util.Collection;" + NL + "import java.util.List;" + NL + "import ";
   protected final String TEXT_3 = ";" + NL + "" + NL + "/**" + NL + " * Interface para controle de objetos persistentes da classe ";
   protected final String TEXT_4 = NL + " * " + NL + " * Pattern Data Access Object" + NL + " * " + NL + " * ";
   protected final String TEXT_5 = NL + " *" + NL + " */" + NL + "public interface ";
@@ -47,7 +47,13 @@ public class DaoTemplate {
   protected final String TEXT_32 = NL + "\t * @throws Exception Caso ocorra erro com hibernate/conexao." + NL + "\t */" + NL + "\tpublic Collection<";
   protected final String TEXT_33 = "> listar() throws Exception;" + NL + "\t" + NL + "\t/**" + NL + "\t * Obtem um objeto da classe ";
   protected final String TEXT_34 = "." + NL + "\t * " + NL + "\t * @param id Chave primaria do objeto" + NL + "\t * @throws Exception Caso ocorra erro com hibernate/conexao." + NL + "\t */" + NL + "\tpublic ";
-  protected final String TEXT_35 = " listar(long id) throws Exception;" + NL + "" + NL + "}";
+  protected final String TEXT_35 = " listar(long id) throws Exception;";
+  protected final String TEXT_36 = NL + "\t" + NL + "\t/**" + NL + "\t * Obtem objetos ";
+  protected final String TEXT_37 = " da classe ";
+  protected final String TEXT_38 = "." + NL + "\t * " + NL + "\t * @param id Chave primaria do objeto" + NL + "\t * @throws Exception Caso ocorra erro com hibernate/conexao." + NL + "\t */" + NL + "\tpublic List<";
+  protected final String TEXT_39 = "> listar";
+  protected final String TEXT_40 = "(int id) throws Exception;" + NL + "\t";
+  protected final String TEXT_41 = NL + "}";
 
 	public String generate(Parameros arg)
   {
@@ -121,6 +127,18 @@ public class DaoTemplate {
     stringBuffer.append(TEXT_34);
     stringBuffer.append(arg.getNomeClasse());
     stringBuffer.append(TEXT_35);
+    for (int i = 0; i < arg.getListas().length; i++) {
+    stringBuffer.append(TEXT_36);
+    stringBuffer.append(arg.getListas()[i]);
+    stringBuffer.append(TEXT_37);
+    stringBuffer.append(arg.getNomeClasse());
+    stringBuffer.append(TEXT_38);
+    stringBuffer.append(arg.getNomeClasse());
+    stringBuffer.append(TEXT_39);
+    stringBuffer.append((arg.getListas()[i].charAt(0)+"").toUpperCase() + arg.getListas()[i].substring(1));
+    stringBuffer.append(TEXT_40);
+    }
+    stringBuffer.append(TEXT_41);
     return stringBuffer.toString();
   }
 }

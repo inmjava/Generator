@@ -4,6 +4,7 @@
 package <%= arg.getPacote()%>.dao;
 
 import java.util.Collection;
+import java.util.List;
 import <%= arg.getPacote() + "." + arg.getNomeClasse()%>;
 
 /**
@@ -89,6 +90,14 @@ public interface <%=arg.getNomeClasse()%>Dao {
 	 * @param id Chave primaria do objeto
 	 * @throws Exception Caso ocorra erro com hibernate/conexao.
 	 */
-	public <%=arg.getNomeClasse()%> listar(long id) throws Exception;
-
+	public <%=arg.getNomeClasse()%> listar(long id) throws Exception;<%for (int i = 0; i < arg.getListas().length; i++) {%>
+	
+	/**
+	 * Obtem objetos <%=arg.getListas()[i]%> da classe <%=arg.getNomeClasse()%>.
+	 * 
+	 * @param id Chave primaria do objeto
+	 * @throws Exception Caso ocorra erro com hibernate/conexao.
+	 */
+	public List<<%=arg.getNomeClasse()%>> listar<%=(arg.getListas()[i].charAt(0)+"").toUpperCase() + arg.getListas()[i].substring(1)%>(int id) throws Exception;
+	<%}%>
 }
