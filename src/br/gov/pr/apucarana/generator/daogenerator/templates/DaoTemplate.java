@@ -52,8 +52,16 @@ public class DaoTemplate {
   protected final String TEXT_37 = " da classe ";
   protected final String TEXT_38 = "." + NL + "\t * " + NL + "\t * @param id Chave primaria do objeto" + NL + "\t * @throws Exception Caso ocorra erro com hibernate/conexao." + NL + "\t */" + NL + "\tpublic List<";
   protected final String TEXT_39 = "> listar";
-  protected final String TEXT_40 = "(int id) throws Exception;" + NL + "\t";
-  protected final String TEXT_41 = NL + "}";
+  protected final String TEXT_40 = "(long id) throws Exception;" + NL + "\t" + NL + "\t/**" + NL + "\t * Obtem objetos ";
+  protected final String TEXT_41 = " da classe ";
+  protected final String TEXT_42 = "." + NL + "\t * " + NL + "\t * @param ";
+  protected final String TEXT_43 = " Objeto ";
+  protected final String TEXT_44 = NL + "\t * @throws Exception Caso ocorra erro com hibernate/conexao." + NL + "\t */" + NL + "\tpublic List<";
+  protected final String TEXT_45 = "> listar";
+  protected final String TEXT_46 = "(";
+  protected final String TEXT_47 = " ";
+  protected final String TEXT_48 = ") throws Exception;" + NL + "\t";
+  protected final String TEXT_49 = NL + "}";
 
 	public String generate(Parameros arg)
   {
@@ -137,8 +145,24 @@ public class DaoTemplate {
     stringBuffer.append(TEXT_39);
     stringBuffer.append((arg.getListas()[i].charAt(0)+"").toUpperCase() + arg.getListas()[i].substring(1));
     stringBuffer.append(TEXT_40);
-    }
+    stringBuffer.append(arg.getListas()[i]);
     stringBuffer.append(TEXT_41);
+    stringBuffer.append(arg.getNomeClasse());
+    stringBuffer.append(TEXT_42);
+    stringBuffer.append(arg.getListas()[i].charAt(0)+"");
+    stringBuffer.append(TEXT_43);
+    stringBuffer.append(arg.getNomeClasse());
+    stringBuffer.append(TEXT_44);
+    stringBuffer.append(arg.getNomeClasse());
+    stringBuffer.append(TEXT_45);
+    stringBuffer.append((arg.getListas()[i].charAt(0)+"").toUpperCase() + arg.getListas()[i].substring(1));
+    stringBuffer.append(TEXT_46);
+    stringBuffer.append(arg.getNomeClasse());
+    stringBuffer.append(TEXT_47);
+    stringBuffer.append(arg.getListas()[i].charAt(0)+"");
+    stringBuffer.append(TEXT_48);
+    }
+    stringBuffer.append(TEXT_49);
     return stringBuffer.toString();
   }
 }

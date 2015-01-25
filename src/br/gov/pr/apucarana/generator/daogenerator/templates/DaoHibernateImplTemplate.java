@@ -29,7 +29,7 @@ public class DaoHibernateImplTemplate {
   protected final String TEXT_14 = " ";
   protected final String TEXT_15 = ") throws Exception {" + NL + "\t\tSession session = ";
   protected final String TEXT_16 = ".getSession();" + NL + "\t\tTransaction tx = session.beginTransaction();" + NL + "\t\ttry {" + NL + "\t\t\tsession.save(";
-  protected final String TEXT_17 = ");" + NL + "\t\t\ttx.commit();" + NL + "\t\t} catch (HibernateException e) {" + NL + "\t\t\ttx.rollback();" + NL + "\t\t\tif (dev) {" + NL + "\t\t\t\te.printStackTrace();" + NL + "\t\t\t}" + NL + "\t\t\tthrow e;" + NL + "\t\t} finally {" + NL + "\t\t\t";
+  protected final String TEXT_17 = ");" + NL + "\t\t\ttx.commit();" + NL + "\t\t} catch (HibernateException e) {" + NL + "\t\t\ttx.rollback();" + NL + "\t\t\tif (dev) {" + NL + "\t\t\t\te.printStackTrace();" + NL + "\t\t\t}" + NL + "\t\t\tthrow e;" + NL + "\t\t} finally {" + NL + "\t\t\t//";
   protected final String TEXT_18 = ".closeSession();" + NL + "\t\t}" + NL + "\t}" + NL + "" + NL + "\t" + NL + "\t/**" + NL + "\t * Altera objeto da classe ";
   protected final String TEXT_19 = "." + NL + "\t * " + NL + "\t * @param ";
   protected final String TEXT_20 = " Objeto da classe ";
@@ -37,7 +37,7 @@ public class DaoHibernateImplTemplate {
   protected final String TEXT_22 = " ";
   protected final String TEXT_23 = ") throws Exception {" + NL + "\t\tSession session = ";
   protected final String TEXT_24 = ".getSession();" + NL + "\t\tTransaction tx = session.beginTransaction();" + NL + "\t\ttry {" + NL + "\t\t\tsession.update(";
-  protected final String TEXT_25 = ");" + NL + "\t\t\ttx.commit();" + NL + "\t\t} catch (HibernateException e) {" + NL + "\t\t\ttx.rollback();" + NL + "\t\t\tif (dev) {" + NL + "\t\t\t\te.printStackTrace();" + NL + "\t\t\t}" + NL + "\t\t\tthrow e;" + NL + "\t\t} finally {" + NL + "\t\t\t";
+  protected final String TEXT_25 = ");" + NL + "\t\t\ttx.commit();" + NL + "\t\t} catch (HibernateException e) {" + NL + "\t\t\ttx.rollback();" + NL + "\t\t\tif (dev) {" + NL + "\t\t\t\te.printStackTrace();" + NL + "\t\t\t}" + NL + "\t\t\tthrow e;" + NL + "\t\t} finally {" + NL + "\t\t\t//";
   protected final String TEXT_26 = ".closeSession();" + NL + "\t\t}" + NL + "\t}" + NL + "\t" + NL + "\t/**" + NL + "\t * Exclui objeto da classe ";
   protected final String TEXT_27 = "." + NL + "\t * " + NL + "\t * @param ";
   protected final String TEXT_28 = " Objeto da classe ";
@@ -45,7 +45,7 @@ public class DaoHibernateImplTemplate {
   protected final String TEXT_30 = " ";
   protected final String TEXT_31 = ") throws Exception {" + NL + "\t\tSession session = ";
   protected final String TEXT_32 = ".getSession();" + NL + "\t\tTransaction tx = session.beginTransaction();" + NL + "\t\ttry {" + NL + "\t\t\tsession.delete(";
-  protected final String TEXT_33 = ");" + NL + "\t\t\ttx.commit();" + NL + "\t\t} catch (HibernateException e) {" + NL + "\t\t\ttx.rollback();" + NL + "\t\t\tif (dev) {" + NL + "\t\t\t\te.printStackTrace();" + NL + "\t\t\t}" + NL + "\t\t\tthrow e;" + NL + "\t\t} finally {" + NL + "\t\t\t";
+  protected final String TEXT_33 = ");" + NL + "\t\t\ttx.commit();" + NL + "\t\t} catch (HibernateException e) {" + NL + "\t\t\ttx.rollback();" + NL + "\t\t\tif (dev) {" + NL + "\t\t\t\te.printStackTrace();" + NL + "\t\t\t}" + NL + "\t\t\tthrow e;" + NL + "\t\t} finally {" + NL + "\t\t\t//";
   protected final String TEXT_34 = ".closeSession();" + NL + "\t\t}" + NL + "\t}" + NL + "\t" + NL + "\t/**" + NL + "\t * Conta o n?mero objetos da classe ";
   protected final String TEXT_35 = "." + NL + "\t */" + NL + "\tpublic int contar() throws Exception {" + NL + "\t\tSession session = ";
   protected final String TEXT_36 = ".getSession();" + NL + "\t\ttry {" + NL + "\t\t\tCriteria q = session.createCriteria(";
@@ -78,10 +78,20 @@ public class DaoHibernateImplTemplate {
   protected final String TEXT_63 = " da classe ";
   protected final String TEXT_64 = "." + NL + "\t * " + NL + "\t * @param id Chave primaria do objeto" + NL + "\t * @throws Exception Caso ocorra erro com hibernate/conexao." + NL + "\t */" + NL + "\t@SuppressWarnings(\"unchecked\")" + NL + "\tpublic List<";
   protected final String TEXT_65 = "> listar";
-  protected final String TEXT_66 = "(int id) throws Exception {" + NL + "\t\tSession session = HibernateUtil.getSession();" + NL + "\t\ttry {" + NL + "\t\t\tQuery query = session.createQuery(\"select b from ";
+  protected final String TEXT_66 = "(long id) throws Exception {" + NL + "\t\tSession session = HibernateUtil.getSession();" + NL + "\t\ttry {" + NL + "\t\t\tQuery query = session.createQuery(\"select b from ";
   protected final String TEXT_67 = " a join a.";
-  protected final String TEXT_68 = " b where a.id = :id\");" + NL + "\t\t\tquery.setParameter(\"id\", id);" + NL + "\t\t\treturn query.list();" + NL + "\t\t} catch (HibernateException e) {" + NL + "\t\t\tif (dev) {" + NL + "\t\t\t\te.printStackTrace();" + NL + "\t\t\t}" + NL + "\t\t\tthrow e;" + NL + "\t\t} " + NL + "\t}";
-  protected final String TEXT_69 = NL + "}";
+  protected final String TEXT_68 = " b where a.id = :id\");" + NL + "\t\t\tquery.setParameter(\"id\", id);" + NL + "\t\t\treturn query.list();" + NL + "\t\t} catch (HibernateException e) {" + NL + "\t\t\tif (dev) {" + NL + "\t\t\t\te.printStackTrace();" + NL + "\t\t\t}" + NL + "\t\t\tthrow e;" + NL + "\t\t} " + NL + "\t}" + NL + "\t" + NL + "\t/**" + NL + "\t * Obtem objetos ";
+  protected final String TEXT_69 = " da classe ";
+  protected final String TEXT_70 = "." + NL + "\t * " + NL + "\t * @param ";
+  protected final String TEXT_71 = " Objeto ";
+  protected final String TEXT_72 = NL + "\t * @throws Exception Caso ocorra erro com hibernate/conexao." + NL + "\t */" + NL + "\tpublic List<";
+  protected final String TEXT_73 = "> listar";
+  protected final String TEXT_74 = "(";
+  protected final String TEXT_75 = " ";
+  protected final String TEXT_76 = ") throws Exception {" + NL + "\t\treturn this.listar";
+  protected final String TEXT_77 = "(";
+  protected final String TEXT_78 = ".getId());" + NL + "\t}";
+  protected final String TEXT_79 = NL + "}";
 
 	public String generate(Parameros arg)
   {
@@ -221,8 +231,28 @@ public class DaoHibernateImplTemplate {
     stringBuffer.append(TEXT_67);
     stringBuffer.append(arg.getListas()[i]);
     stringBuffer.append(TEXT_68);
-    }
+    stringBuffer.append(arg.getListas()[i]);
     stringBuffer.append(TEXT_69);
+    stringBuffer.append(arg.getNomeClasse());
+    stringBuffer.append(TEXT_70);
+    stringBuffer.append(arg.getListas()[i].charAt(0)+"");
+    stringBuffer.append(TEXT_71);
+    stringBuffer.append(arg.getNomeClasse());
+    stringBuffer.append(TEXT_72);
+    stringBuffer.append(arg.getNomeClasse());
+    stringBuffer.append(TEXT_73);
+    stringBuffer.append((arg.getListas()[i].charAt(0)+"").toUpperCase() + arg.getListas()[i].substring(1));
+    stringBuffer.append(TEXT_74);
+    stringBuffer.append(arg.getNomeClasse());
+    stringBuffer.append(TEXT_75);
+    stringBuffer.append(arg.getListas()[i].charAt(0)+"");
+    stringBuffer.append(TEXT_76);
+    stringBuffer.append((arg.getListas()[i].charAt(0)+"").toUpperCase() + arg.getListas()[i].substring(1));
+    stringBuffer.append(TEXT_77);
+    stringBuffer.append(arg.getListas()[i].charAt(0)+"");
+    stringBuffer.append(TEXT_78);
+    }
+    stringBuffer.append(TEXT_79);
     return stringBuffer.toString();
   }
 }
