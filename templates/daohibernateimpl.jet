@@ -216,7 +216,7 @@ import <%= arg.getPacote() + ".dao." + arg.getNomeClasse()%>Dao;
 	 * @throws Exception Caso ocorra erro com hibernate/conexao.
 	 */
 	@SuppressWarnings("unchecked")
-	public List<<%=arg.getNomeClasse()%>> listar<%=(arg.getListas()[i].charAt(0)+"").toUpperCase() + arg.getListas()[i].substring(1)%>(long id) throws Exception {
+	public List listar<%=(arg.getListas()[i].charAt(0)+"").toUpperCase() + arg.getListas()[i].substring(1)%>(long id) throws Exception {
 		Session session = HibernateUtil.getSession();
 		try {
 			Query query = session.createQuery("select b from <%=arg.getNomeClasse()%> a join a.<%=arg.getListas()[i]%> b where a.id = :id");
@@ -236,7 +236,7 @@ import <%= arg.getPacote() + ".dao." + arg.getNomeClasse()%>Dao;
 	 * @param <%=arg.getListas()[i].charAt(0)+""%> Objeto <%=arg.getNomeClasse()%>
 	 * @throws Exception Caso ocorra erro com hibernate/conexao.
 	 */
-	public List<<%=arg.getNomeClasse()%>> listar<%=(arg.getListas()[i].charAt(0)+"").toUpperCase() + arg.getListas()[i].substring(1)%>(<%=arg.getNomeClasse()%> <%=arg.getListas()[i].charAt(0)+""%>) throws Exception {
+	public List listar<%=(arg.getListas()[i].charAt(0)+"").toUpperCase() + arg.getListas()[i].substring(1)%>(<%=arg.getNomeClasse()%> <%=arg.getListas()[i].charAt(0)+""%>) throws Exception {
 		return this.listar<%=(arg.getListas()[i].charAt(0)+"").toUpperCase() + arg.getListas()[i].substring(1)%>(<%=arg.getListas()[i].charAt(0)+""%>.getId());
 	}<%}%>
 }

@@ -98,7 +98,7 @@ public interface <%=arg.getNomeClasse()%>Dao {
 	 * @param id Chave primaria do objeto
 	 * @throws Exception Caso ocorra erro com hibernate/conexao.
 	 */
-	public List<<%=arg.getNomeClasse()%>> listar<%=(arg.getListas()[i].charAt(0)+"").toUpperCase() + arg.getListas()[i].substring(1)%>(long id) throws Exception;
+	public List listar<%=(arg.getListas()[i].charAt(0)+"").toUpperCase() + arg.getListas()[i].substring(1)%>(long id) throws Exception;
 	
 	/**
 	 * Obtem objetos <%=arg.getListas()[i]%> da classe <%=arg.getNomeClasse()%>.
@@ -106,6 +106,6 @@ public interface <%=arg.getNomeClasse()%>Dao {
 	 * @param <%=arg.getListas()[i].charAt(0)+""%> Objeto <%=arg.getNomeClasse()%>
 	 * @throws Exception Caso ocorra erro com hibernate/conexao.
 	 */
-	public List<<%=arg.getNomeClasse()%>> listar<%=(arg.getListas()[i].charAt(0)+"").toUpperCase() + arg.getListas()[i].substring(1)%>(<%=arg.getNomeClasse()%> <%=arg.getListas()[i].charAt(0)+""%>) throws Exception;
+	public List listar<%=(arg.getListas()[i].charAt(0)+"").toUpperCase() + arg.getListas()[i].substring(1)%>(<%=arg.getNomeClasse()%> <%=arg.getListas()[i].charAt(0)+""%>) throws Exception;
 	<%}%>
 }
